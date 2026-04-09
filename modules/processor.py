@@ -73,3 +73,20 @@ def calculate_recovery_score(df):
 
     df['Recovery_Score'] = recovery_scores
     return df
+
+
+def process_data():
+    """
+    Main function to load and process health data for the dashboard.
+
+    Returns:
+        pd.DataFrame: The final processed DataFrame with Recovery Score.
+    """
+    # Load cleaned data
+    df = load_data()
+
+    # Add Recovery Score
+    df = calculate_recovery_score(df)
+
+    return df
+
