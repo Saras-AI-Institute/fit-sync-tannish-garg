@@ -39,8 +39,12 @@ def main():
     st.title("Trends & Insights")
     
     # Load and process the data
-    df = process_data()
+    @st.cache_data
+    def load_data():
+        return process_data()
     
+    df = load_data()
+
     # Apply sidebar filters
     filtered_df = sidebar_filters(df)
     

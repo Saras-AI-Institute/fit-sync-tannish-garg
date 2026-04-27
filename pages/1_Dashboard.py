@@ -35,8 +35,12 @@ def sidebar_filters(df):
 # Main function
 def main():
     # Load and process the data
-    df = process_data()
+    @st.cache_data
+    def load_data():
+        return process_data()
     
+    df = load_data()
+
     # Apply sidebar filters
     filtered_df = sidebar_filters(df)
     
@@ -90,3 +94,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
